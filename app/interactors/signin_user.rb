@@ -8,6 +8,6 @@ class SigninUser
            CreateRefreshToken
 
   after do
-    RegisterActivityJob.perform_later(user.id, :user_logged_in)
+    #RegisterActivityJob.perform_later(user.id, :user_logged_in)
   end
 end
