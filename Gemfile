@@ -27,6 +27,7 @@ gem "rack-cors"
 gem "shrine"
 gem "sidekiq"
 gem "strong_migrations"
+gem 'counter_culture', '~> 2.0'
 
 group :development do
   gem "letter_opener"

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_01_144722) do
+ActiveRecord::Schema.define(version: 2021_12_05_172302) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -58,10 +58,19 @@ ActiveRecord::Schema.define(version: 2021_12_01_144722) do
 
   create_table "tasks", force: :cascade do |t|
     t.string "title", null: false
-    t.string "type"
+    t.string "kind"
     t.integer "complexity"
+    t.bigint "requester_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["requester_id"], name: "index_tasks_on_requester_id"
+  end
+
+  create_table "teams", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "users_count", default: 0, null: false
   end
 
   create_table "users", force: :cascade do |t|
@@ -75,8 +84,11 @@ ActiveRecord::Schema.define(version: 2021_12_01_144722) do
     t.datetime "password_reset_sent_at"
     t.text "avatar_data"
     t.datetime "confirmed_at"
+    t.string "role"
+    t.bigint "team_id", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
+    t.index ["team_id"], name: "index_users_on_team_id"
   end
 
   add_foreign_key "activities", "users"
@@ -84,4 +96,6 @@ ActiveRecord::Schema.define(version: 2021_12_01_144722) do
   add_foreign_key "refresh_tokens", "users"
   add_foreign_key "task_users", "tasks"
   add_foreign_key "task_users", "users"
+  add_foreign_key "tasks", "users", column: "requester_id"
+  add_foreign_key "users", "teams"
 end
