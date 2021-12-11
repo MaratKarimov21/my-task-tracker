@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_05_172302) do
+ActiveRecord::Schema.define(version: 2021_12_11_083225) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -64,6 +64,13 @@ ActiveRecord::Schema.define(version: 2021_12_05_172302) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["requester_id"], name: "index_tasks_on_requester_id"
+  end
+
+  create_table "tasks_relations", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "teams", force: :cascade do |t|
