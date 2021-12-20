@@ -3,30 +3,30 @@ module Mutations
     class Update < BaseMutation
       include AuthenticableGraphqlUser
 
-      argument :input, Types::InputFields::CreateTaskInput, required: true
+      argument :input, Types::InputFields::UpdateTaskInput, required: true
 
-      type Types::Payloads::CreateTaskType
+      type Types::Payloads::UpdateTaskType
 
       def resolve(input:)
         @params = input.to_h
-        
-        authorize! build_task, to: :create?, with: TaskPolicy
 
-        if create_task.success?
-          create_task
+        authorize! task, to: :update?, with: TaskPolicy
+        
+        if update_task.success?
+          update_task
         else
-          execution_error(error_data: create_task.error_data)
+          execution_error(error_data: update_task.error_data)
         end
       end
 
       private
 
-      def build_task
-        @build_task ||= Task.new(requester_id: current_user.id)
+      def update_task
+        @update_task ||= ::Tasks::Update.call(task: task, task_params: @params.except(:task_id))
       end
 
-      def create_task
-        @create_task ||= ::Tasks::Create.call(task: build_task, task_params: @params)
+      def task
+        task ||= ::Task.find(@params[:task_id])
       end
     end
   end
