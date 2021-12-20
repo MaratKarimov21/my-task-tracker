@@ -3,10 +3,12 @@
 * Manager can create tasks
 * Manager can assign developers to task
 
-* All can change status, title, description of task
+* All can change title, description of task
+* All can start task
 
 * Lead and Manager can estimate task
 * Lead and Manager can add blokers to task
+* Lead and Manager can finish task
 
 
 
