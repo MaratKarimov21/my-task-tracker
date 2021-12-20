@@ -4,7 +4,7 @@
 * Manager can assign developers to task
 
 * All can change status, title, description of task
-* 
+
 * Lead and Manager can estimate task
 * Lead and Manager can add blokers to task
 
