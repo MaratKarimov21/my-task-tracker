@@ -26,6 +26,13 @@ ActiveRecord::Schema.define(version: 2021_12_11_083225) do
     t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
+  create_table "blockers", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "possession_tokens", force: :cascade do |t|
     t.string "value", null: false
     t.bigint "user_id", null: false
@@ -64,13 +71,6 @@ ActiveRecord::Schema.define(version: 2021_12_11_083225) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["requester_id"], name: "index_tasks_on_requester_id"
-  end
-
-  create_table "tasks_relations", force: :cascade do |t|
-    t.integer "blocker_id"
-    t.integer "blocked_id"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "teams", force: :cascade do |t|
