@@ -6,7 +6,8 @@ user_1 = User.create!(
   last_name: "Vader",
   password: "123456",
   role: "developer",
-  team_id: team.id
+  team: team
+
 )
 user_2 = User.create!(
   email: "john.doe@example.com", 
@@ -14,7 +15,7 @@ user_2 = User.create!(
   last_name: "Doe", 
   password: "123456",
   role: "developer",
-  team_id: team.id
+  team: team
 )
 user_3 = User.create!(
   email: "test.test@test.com",  
@@ -22,19 +23,29 @@ user_3 = User.create!(
   last_name: "Test",
   password: "123456",
   role: "developer",
-  team_id: team.id
+  team: team
 )
 manager = User.create!(
-  email: "test4.test4@test4.com",  
+  email: "test1.test@test.com",
   first_name: "Test",
   last_name: "Test",
   password: "123456",
   role: "manager",
-  team_id: team.id
+  team: team
 )
-
 puts "users created"
 
-task_1 = Task.create!(title: "task 1", kind: "feature", complexity: 1, requester_id: manager.id)
-task_2 = Task.create!(title: "task 2", kind: "feature", complexity: 1, requester_id: manager.id)
-task_3 = Task.create!(title: "task 3", kind: "feature", complexity: 1, requester_id: manager.id)
+task_1 = Task.create!(title: "task 1", complexity: 2, kind: "feature", requester: manager,)
+task_2 = Task.create!(title: "task 2", complexity: 2, kind: "feature", requester: manager,)
+task_3 = Task.create!(title: "task 3", complexity: 2, kind: "feature", requester: manager,)
+
+# user_1 has 3 tascks
+TaskUser.create!(task: task_1, user: user_1)
+TaskUser.create!(task: task_2, user: user_1)
+TaskUser.create!(task: task_3, user: user_1)
+
+# task_1 has 3 users
+TaskUser.create!(task: task_1, user: user_2)
+TaskUser.create!(task: task_1, user: user_3)
+
+puts "tasks created" 
