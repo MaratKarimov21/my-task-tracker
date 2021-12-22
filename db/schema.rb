@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_12_12_102414) do
+ActiveRecord::Schema.define(version: 2021_12_20_125009) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
@@ -24,6 +24,13 @@ ActiveRecord::Schema.define(version: 2021_12_12_102414) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["user_id"], name: "index_activities_on_user_id"
+  end
+
+  create_table "blockers", force: :cascade do |t|
+    t.integer "blocker_id"
+    t.integer "blocked_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "possession_tokens", force: :cascade do |t|
@@ -66,6 +73,8 @@ ActiveRecord::Schema.define(version: 2021_12_12_102414) do
     t.string "description"
     t.string "status", null: false
     t.datetime "finished_at"
+    t.datetime "started_at"
+
     t.index ["requester_id"], name: "index_tasks_on_requester_id"
   end
 
@@ -95,6 +104,8 @@ ActiveRecord::Schema.define(version: 2021_12_12_102414) do
   end
 
   add_foreign_key "activities", "users"
+  add_foreign_key "blockers", "tasks", column: "blocked_id"
+  add_foreign_key "blockers", "tasks", column: "blocker_id"
   add_foreign_key "possession_tokens", "users"
   add_foreign_key "refresh_tokens", "users"
   add_foreign_key "task_users", "tasks"
