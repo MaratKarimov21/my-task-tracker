@@ -25,7 +25,7 @@ user_3 = User.create!(
   team: team
 )
 manager = User.create!(
-  email: "test1.test@test.com",  
+  email: "test1.test@test.com",
   first_name: "Test",
   last_name: "Test",
   password: "123456",
@@ -34,9 +34,9 @@ manager = User.create!(
 )
 puts "users created"
 
-task_1 = Task.create!(title: "task 1", complexity: 2, kind: "feature", requester: manager)
-task_2 = Task.create!(title: "task 2", complexity: 2, kind: "feature", requester: manager)
-task_3 = Task.create!(title: "task 3", complexity: 2, kind: "feature", requester: manager)
+task_1 = Task.create!(title: "task 1", complexity: 2, kind: "feature", requester: manager,)
+task_2 = Task.create!(title: "task 2", complexity: 2, kind: "feature", requester: manager,)
+task_3 = Task.create!(title: "task 3", complexity: 2, kind: "feature", requester: manager,)
 
 # user_1 has 3 tascks
 TaskUser.create!(task: task_1, user: user_1)
@@ -47,8 +47,4 @@ TaskUser.create!(task: task_3, user: user_1)
 TaskUser.create!(task: task_1, user: user_2)
 TaskUser.create!(task: task_1, user: user_3)
 
-TasksRelation.create!(blocker: task_1, blocked: task_2)
-TasksRelation.create!(blocker: task_1, blocked: task_3)
-
-
-puts "tasks created"
+puts "tasks created" 

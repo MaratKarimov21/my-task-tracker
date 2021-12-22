@@ -7,7 +7,7 @@ module Tasks
     def call
       return if task_params.blank?
 
-      context.task ||= Poll.new
+      context.task ||= Task.new
 
       context.fail!(error_data: error_data) unless task.update(task_params)
 
