@@ -3,6 +3,7 @@ module Tasks
     include Interactor::Organizer
     include TransactionalInteractor
 
-    organize TasksRelations::SaveRecord
+    organize Blockers::PrepareParams,
+    Blockers::SaveRecord
   end
 end

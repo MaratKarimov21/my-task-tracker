@@ -1,7 +1,8 @@
 module Types
   module Payloads
     class AddBlockerType < Types::BaseObject
-      field :tasks_relation, Types::TasksRelationType, null: false
+      field :blocked_task, Types::TaskType, null: false
+      field :blocker_task, Types::TaskType, null: false
     end
   end
 end

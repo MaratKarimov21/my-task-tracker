@@ -10,21 +10,30 @@ module Mutations
       def resolve(input:)
         @params = input.to_h
         
-        if create_tasks_relation.success?
-          create_tasks_relation
+        if create_blocker.success?
+          create_blocker
         else
-          execution_error(error_data: create_tasks_relation.error_data)
+          execution_error(error_data: create_blocker.error_data)
         end
       end
 
+      attr_reader :params
+
       private
 
-      def build_tasks_relation
-        @build_tasks_relation ||= TasksRelation.new()
+      def create_blocker
+        @create_blocker ||= ::Tasks::AddBlocker.call(
+          blocker_task: blocker_task,
+          blocked_task: blocked_task
+        )
       end
 
-      def create_tasks_relation
-        @create_tasks_relation ||= ::Tasks::AddBlocker.call(tasks_relation: build_tasks_relation, tasks_relation_params: @params)
+      def blocker_task
+        @blocker_task ||= ::Task.find(params[:blocker_id])
+      end
+
+      def blocked_task
+        @blocked_task ||= ::Task.find(params[:blocked_id])
       end
     end
   end
