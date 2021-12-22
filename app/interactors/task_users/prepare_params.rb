@@ -2,7 +2,7 @@ module TaskUsers
   class PrepareParams
     include Interactor
 
-    delegate :task_id, :user_id, to: :context
+    delegate :task, :user, to: :context
 
     def call
       context.task_user_params = task_user_params
@@ -12,8 +12,8 @@ module TaskUsers
 
     def task_user_params
       {
-        task_id: task_id,
-        user_id: user_id
+        task_id: task.id,
+        user_id: user.id
       }
     end
   end

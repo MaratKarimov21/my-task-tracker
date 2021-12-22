@@ -18,9 +18,9 @@ module Mutations
       private
 
       def assign_owner
-        @assign_owner = ::TaskUsers::AssignOwner.call({
-          task_id: task.id,
-          user_id: user.id
+        @assign_owner = ::Tasks::AssignOwner.call({
+          task: task,
+          user: user
         })
       end
 
