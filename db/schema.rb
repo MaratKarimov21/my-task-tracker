@@ -71,10 +71,8 @@ ActiveRecord::Schema.define(version: 2021_12_20_125009) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "description"
-    t.string "status", null: false
-    t.datetime "finished_at"
     t.datetime "started_at"
-
+    t.datetime "finished_at"
     t.index ["requester_id"], name: "index_tasks_on_requester_id"
   end
 
@@ -97,7 +95,7 @@ ActiveRecord::Schema.define(version: 2021_12_20_125009) do
     t.text "avatar_data"
     t.datetime "confirmed_at"
     t.string "role"
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
     t.index ["team_id"], name: "index_users_on_team_id"

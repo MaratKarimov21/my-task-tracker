@@ -17,6 +17,8 @@ module Mutations
 
       private
 
+      attr_accessor :params
+
       def assign_owner
         @assign_owner = ::Tasks::AssignOwner.call({
           task: task,
@@ -25,11 +27,11 @@ module Mutations
       end
 
       def task
-        @task = Task.find(@params[:task_id])
+        @task = Task.find(params[:task_id])
       end
 
       def user
-        @user = Task.find(@params[:user_id])
+        @user = Task.find(params[:user_id])
       end
       
     end

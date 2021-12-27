@@ -21,12 +21,14 @@ module Mutations
 
       private
 
+      attr_accessor :params
+
       def build_task
         @build_task ||= Task.new(requester_id: current_user.id)
       end
 
       def create_task
-        @create_task ||= ::Tasks::Create.call(task: build_task, task_params: @params)
+        @create_task ||= ::Tasks::Create.call(task: build_task, task_params: params)
       end
     end
   end

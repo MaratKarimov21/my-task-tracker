@@ -1,0 +1,10 @@
+{
+  "data": {
+    "createTask": {
+      "task": {
+        "title": "title",
+        "kind": "feature"
+      }
+    }
+  }
+}

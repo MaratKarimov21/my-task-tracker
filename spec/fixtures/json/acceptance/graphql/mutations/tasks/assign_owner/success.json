@@ -1,0 +1,12 @@
+{
+  "data": {
+    "assignOwner": {
+      "task": {
+        "title": "some title"
+      },
+      "user": {
+        "id": "1"
+      }
+    }
+  }
+}
