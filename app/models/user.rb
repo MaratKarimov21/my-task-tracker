@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   AVAILABLE_ROLES = %i[developer lead manager].freeze
 
-  belongs_to :team
+  belongs_to :team, optional: true
 
   has_secure_password
   has_secure_token :password_reset_token
