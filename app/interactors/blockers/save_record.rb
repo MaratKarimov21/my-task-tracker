@@ -15,7 +15,7 @@ module Blockers
     private
 
     def error_data
-      { message: "record invalid", detail: blocker.errors.to_a }
+      { message: I18n.t("errors.messages.record_invalid"), detail: blocker.errors.to_a }
     end
   end
 end
