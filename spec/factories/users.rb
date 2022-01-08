@@ -15,5 +15,9 @@ FactoryBot.define do
       first_name { "Adam" }
       last_name { "Serwer" }
     end
+
+    trait :manager do
+      role { "manager" }
+    end
   end
 end

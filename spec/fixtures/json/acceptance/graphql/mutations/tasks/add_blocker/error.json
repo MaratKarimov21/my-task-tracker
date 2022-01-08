@@ -1,0 +1,26 @@
+{
+  "data": {
+    "addBlocker": null
+  },
+  "errors": [
+    {
+      "message": "record invalid",
+      "locations": [
+        {
+          "line": 2,
+          "column": 7
+        }
+      ],
+      "path": [
+        "addBlocker"
+      ],
+      "extensions": {
+        "detail": [
+          "Blocker has already been taken"
+        ],
+        "status": 422,
+        "code": "unprocessable_entity"
+      }
+    }
+  ]
+}
