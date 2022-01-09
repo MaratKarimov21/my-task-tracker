@@ -1,0 +1,9 @@
+{
+  "data": {
+    "startTask": {
+      "task": {
+        "startedAt": ":date"
+      }
+    }
+  }
+}
