@@ -1,0 +1,12 @@
+{
+  "data": {
+    "addBlocker": {
+      "blockedTask": {
+        "id": ":blocked_id"
+      },
+      "blockerTask": {
+        "id": ":blocker_id"
+      }
+    }
+  }
+}

@@ -7,7 +7,6 @@ user_1 = User.create!(
   password: "123456",
   role: "developer",
   team: team
-
 )
 user_2 = User.create!(
   email: "john.doe@example.com", 
