@@ -1,4 +1,11 @@
 class TaskPolicy < ApplicationPolicy
+
+  def finish?
+    record.started_at != nil &&
+    record.finished_at == nil &&
+    (user.tasks.include?(record) || manage_access?)
+  end
+
   def create?
     manage_access?
   end
