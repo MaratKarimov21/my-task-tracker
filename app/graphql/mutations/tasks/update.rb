@@ -21,12 +21,14 @@ module Mutations
 
       private
 
+      attr_reader :params
+
       def update_task
-        @update_task ||= ::Tasks::Update.call(task: task, task_params: @params.except(:task_id))
+        @update_task ||= ::Tasks::Update.call(task: task, task_params: params.except(:task_id))
       end
 
       def task
-        task ||= ::Task.find(@params[:task_id])
+        task ||= ::Task.find(params[:task_id])
       end
     end
   end

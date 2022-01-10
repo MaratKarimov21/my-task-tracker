@@ -1,0 +1,10 @@
+{
+  "data": {
+    "updateTask": {
+      "task": {
+        "title": "updated title",
+        "description": "updated description"
+      }
+    }
+  }
+}

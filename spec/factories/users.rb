@@ -4,6 +4,8 @@ FactoryBot.define do
     password { "password" }
     first_name { FFaker::Name.first_name }
     last_name  { FFaker::Name.first_name }
+    role { "developer" }
+    team { create :team }
 
     trait :with_reset_token do
       password_reset_token { "reset_token" }
@@ -14,6 +16,10 @@ FactoryBot.define do
       email { "adam@serwer.com" }
       first_name { "Adam" }
       last_name { "Serwer" }
+    end
+
+    trait :manager do
+      role { "manager" }
     end
   end
 end

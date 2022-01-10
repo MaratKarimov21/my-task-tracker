@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2021_12_12_102414) do
     t.text "avatar_data"
     t.datetime "confirmed_at"
     t.string "role"
-    t.bigint "team_id", null: false
+    t.bigint "team_id"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["password_reset_token"], name: "index_users_on_password_reset_token"
     t.index ["team_id"], name: "index_users_on_team_id"
