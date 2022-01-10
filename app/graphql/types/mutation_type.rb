@@ -12,5 +12,6 @@ module Types
     field :omniauth_signin_or_signup, mutation: Mutations::OmniauthSignInOrSignUp
     field :create_task, mutation: Mutations::Tasks::Create
     field :assign_owner, mutation: Mutations::Tasks::AssignOwner
+    field :finish_task, mutation: Mutations::Tasks::Finish
   end
 end
